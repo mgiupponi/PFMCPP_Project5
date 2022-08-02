@@ -85,7 +85,8 @@ struct StationersShop
     int numberOfEmployees;
 
     StationersShop() : monthElectricityBill( 138.2f ), profitPerDay( 138.2f ), numberOfEmployees( 10 ) { }
-    
+    ~StationersShop() { std::cout << "Making a photocopy!" << std::endl; }
+
     struct Paper
     {
         bool forPhotoPrinting = false;
