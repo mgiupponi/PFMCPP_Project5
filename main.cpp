@@ -352,22 +352,14 @@ struct businessOwner
     Wallet wallet = Wallet();            
     Laptop laptop = Laptop();               
 
-    StationersShop() : stationersShop. { }
-    ~StationersShop() { std::cout << "StationersShop Destructor" << std::endl; }
-
-    struct Paper
+    StationersShop()
     {
-        bool forPhotoPrinting = false;
-        float thicnessInuM = 200.0f;        
-        float priceInUsd = 0.1f;
-        std::string sizeStandard = "A4";
-        std::string manufacturer = "whixe";
-
-        void printDocument(std::string fileName, float zoomPercentage, bool onesided = false); 
-        float printPhoto(int qualityIndex);
-        bool moveToSellingOutbox(Paper paperB);
-        
-    };
+        stationersShop.makeAPhotocopy(Paper paperA, bool isBlackAndWhite, bool onesided);
+    }
+    ~StationersShop()
+    { 
+        std::cout << "StationersShop Destructor" << std::endl;
+    }
 
     float makeAPhotocopy(Paper paperA, bool isBlackAndWhite = true , bool onesided = false);
     float takePassportPhoto(Paper paperB, std::string sizeStandard);
@@ -375,7 +367,6 @@ struct businessOwner
     float chargeCustomer(std::string customerName, float maxCredit, int numItems);
     float sendItems(std::string customerAddress, float weightPerItem, int numItems);
 
-    Paper paperToBeUsed;  
 };
 
 float StationersShop::makeAPhotocopy(Paper paperA, bool isBlackAndWhite, bool onesided)
