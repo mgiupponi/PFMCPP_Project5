@@ -85,7 +85,7 @@ struct StationersShop
     int numberOfEmployees;
 
     StationersShop() : monthElectricityBill( 138.2f ), profitPerDay( 138.2f ), numberOfEmployees( 10 ) { }
-    ~StationersShop() { std::cout << "Making a photocopy!" << std::endl; }
+    ~StationersShop() { std::cout << "StationersShop Destructor" << std::endl; }
 
     struct Paper
     {
@@ -184,6 +184,7 @@ struct Wallet
     std::string color = "Brown";
 
     Wallet() : numSlots( 7 ), color( "Brown" ) { }
+    ~Wallet() { std::cout << "Wallet Destructor" << std::endl; }
     
     struct CreditCard      
     {
@@ -270,6 +271,7 @@ struct Laptop
     std::string brand = "Lenovo";
 
     Laptop() : color( "Black" ), screenSizeInInches( 17 ) { }
+    ~Laptop() { std::cout << "Laptop Destructor" << std::endl; }
     
     struct File      
     {
