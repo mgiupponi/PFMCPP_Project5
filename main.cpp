@@ -346,6 +346,99 @@ float Laptop::zoomFile(File inputFile, float zoomPercentage)
  with 2 member functions
  */
 
+struct businessOwner      
+{
+    StationersShop stationersShop = StationersShop();
+    Wallet wallet = Wallet();            
+    Laptop laptop = Laptop();               
+
+    StationersShop() : stationersShop. { }
+    ~StationersShop() { std::cout << "StationersShop Destructor" << std::endl; }
+
+    struct Paper
+    {
+        bool forPhotoPrinting = false;
+        float thicnessInuM = 200.0f;        
+        float priceInUsd = 0.1f;
+        std::string sizeStandard = "A4";
+        std::string manufacturer = "whixe";
+
+        void printDocument(std::string fileName, float zoomPercentage, bool onesided = false); 
+        float printPhoto(int qualityIndex);
+        bool moveToSellingOutbox(Paper paperB);
+        
+    };
+
+    float makeAPhotocopy(Paper paperA, bool isBlackAndWhite = true , bool onesided = false);
+    float takePassportPhoto(Paper paperB, std::string sizeStandard);
+    void wrapAGift(std::string wrappingPaperModel);
+    float chargeCustomer(std::string customerName, float maxCredit, int numItems);
+    float sendItems(std::string customerAddress, float weightPerItem, int numItems);
+
+    Paper paperToBeUsed;  
+};
+
+float StationersShop::makeAPhotocopy(Paper paperA, bool isBlackAndWhite, bool onesided)
+{    
+    float price = paperA.priceInUsd;
+    if (isBlackAndWhite == false)
+    {
+         price = price * 2;
+    }
+    if (onesided == false)
+    {
+         price = price * 2;
+    }
+    std::cout << "Making a photocopy!" << std::endl;
+    std::cout << "StationersShop::makeAPhotocopy(...) monthElectricityBill:" << monthElectricityBill << " numberOfEmployees: " << numberOfEmployees << std::endl;
+    return price;
+}
+
+float StationersShop::takePassportPhoto(Paper paperB, std::string sizeStandard)
+{    
+    float price = paperB.priceInUsd;
+    if (sizeStandard.length() > 2)
+    {
+         price = price * 2;
+    }
+    return price;
+}
+
+void StationersShop::wrapAGift(std::string wrappingPaperModel)
+{    
+    std::cout << wrappingPaperModel.size();
+}
+
+float StationersShop::chargeCustomer(std::string customerName, float maxCredit, int numItems)
+{    
+    float totalPrice = 0.0f;
+    auto paper = StationersShop::Paper();
+    while ( totalPrice < maxCredit ) 
+    {
+        paper.priceInUsd = ( maxCredit / numItems ) * 0.95f - paper.priceInUsd * 0.2f;
+        totalPrice += paper.priceInUsd * 1.2f;
+        std::cout << "chargeCustomer customerName:" << customerName << " totalPrice: " << totalPrice << std::endl;
+    }
+    return totalPrice;
+}
+
+
+float StationersShop::sendItems(std::string customerAddress, float weightPerItem, int numItems)
+{   
+    float shippingCost = 0.0f;
+    auto paper = StationersShop::Paper();
+    int i = 0;
+    while ( i < numItems ) 
+    {
+        paper.thicnessInuM = ( paper.thicnessInuM ) * 0.95f + paper.thicnessInuM * 0.2f;
+        shippingCost += paper.thicnessInuM * 0.8f + weightPerItem;
+        std::cout << "sendItems customerAddress:" << customerAddress << " shippingCost: " << shippingCost << std::endl;
+        ++i;
+    }
+    return shippingCost;
+}
+
+
 /*
  new UDT 5:
  with 2 member functions
